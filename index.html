@@ -1,624 +1,183 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description"
-        content="Abhishek Ruikar — Computer Science Student, backend Developer, Problem Solver. Portfolio showcasing projects, skills, and achievements.">
-    <title>Abhishek Ruikar | Portfolio</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap"
-        rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <meta name="description" content="Abhishek Ruikar — Neo-Brutalism Portfolio">
+    <title>A.RUIKAR // BUILDER</title>
+    <!-- Brutalist Fonts: Archivo Black for Display, Space Mono for Text -->
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
+<body id="brutal-body">
+    
+    <!-- Custom Brutalist Cursor -->
+    <div class="cursor-dot" id="cursor-dot"></div>
+    <div class="cursor-cross" id="cursor-cross"></div>
 
-<body>
-    <!-- Cursor glow effect -->
-    <div class="cursor-glow" id="cursorGlow"></div>
-
-    <!-- Particle canvas background -->
-    <canvas id="particleCanvas"></canvas>
-
-    <!-- Navigation -->
-    <nav class="navbar" id="navbar">
-        <div class="nav-container">
-            <a href="#hero" class="nav-logo">
-                <span class="logo-bracket">&lt;</span>AR<span class="logo-bracket"> /&gt;</span>
-            </a>
-            <ul class="nav-links" id="navLinks">
-                <li><a href="#hero" class="nav-link active" data-section="hero">Home</a></li>
-                <li><a href="#about" class="nav-link" data-section="about">About</a></li>
-                <li><a href="#skills" class="nav-link" data-section="skills">Skills</a></li>
-                <li><a href="#projects" class="nav-link" data-section="projects">Projects</a></li>
-                <li><a href="#experience" class="nav-link" data-section="experience">Experience</a></li>
-                <li><a href="#contact" class="nav-link" data-section="contact">Contact</a></li>
-            </ul>
-            <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
-                <span class="hamburger"></span>
-            </button>
+    <!-- Navigation Area -->
+    <nav class="brutal-nav border-bottom">
+        <div class="nav-logo border-right">
+            <span>A.RUIKAR</span>
         </div>
+        
+        <div class="nav-marquee border-right">
+            <div class="marquee-track">
+                <span>FRONTEND IGNORANT</span> • <span>BACKEND DOMINANT</span> • <span>FRONTEND IGNORANT</span> • <span>BACKEND DOMINANT</span> • <span>FRONTEND IGNORANT</span> • <span>BACKEND DOMINANT</span>
+            </div>
+        </div>
+
+        <a href="mailto:abhishekruikar67@gmail.com" class="nav-cta bg-red text-white">
+            HIRE.ME
+        </a>
     </nav>
 
-    <!-- Hero Section -->
-    <section class="hero" id="hero">
-        <div class="hero-content">
-            <div class="hero-text">
-                <p class="hero-greeting">
-                    <span class="wave">👋</span> Hello, I'm
-                </p>
-                <h1 class="hero-name">
-                    <span class="name-line">Abhishek</span>
-                    <span class="name-line accent">Ruikar</span>
-                </h1>
-                <div class="hero-title-wrapper">
-                    <span class="hero-title-prefix">I'm a </span>
-                    <span class="typewriter" id="typewriter"></span>
-                    <span class="typewriter-cursor">|</span>
+    <!-- Main Container -->
+    <main class="container">
+        
+        <!-- Hero Section -->
+        <section class="hero-section">
+            <h1 class="giant-heading">
+                ARCHITECTING<br>
+                <span class="bg-yellow border-basic stagger-text" style="display:inline-block; transform: rotate(-2deg); margin: 10px 0;">INTELLIGENCE</span><br>
+                & LOGIC.
+            </h1>
+            
+            <div class="hero-card brutal-card bg-blue text-white">
+                <div class="card-img-wrapper border-bottom">
+                    <img src="avatar.png" class="brutal-img" alt="Abhishek" onerror="this.src='https://ui-avatars.com/api/?name=Abhishek+Ruikar&background=random&size=400'">
                 </div>
-                <p class="hero-description">
-                    Computer Science student passionate about building real-world solutions with technology.
-                    Currently crafting intelligent systems at the intersection of AI & software engineering.
-                </p>
-                <div class="hero-cta">
-                    <a href="#projects" class="btn btn-primary" id="viewWorkBtn">
-                        <span>View My Work</span>
-                        <i class="fas fa-arrow-right"></i>
-                    </a>
-                    <a href="#contact" class="btn btn-outline" id="contactMeBtn">
-                        <span>Contact Me</span>
-                        <i class="fas fa-paper-plane"></i>
-                    </a>
-                </div>
-                <div class="hero-stats">
-                    <div class="stat">
-                        <span class="stat-number" data-target="3">0</span><span class="stat-suffix">+</span>
-                        <span class="stat-label">Projects</span>
-                    </div>
-                    <div class="stat">
-                        <span class="stat-number" data-target="11">0</span><span class="stat-suffix">+</span>
-                        <span class="stat-label">Skills</span>
-                    </div>
-                    <div class="stat">
-                        <span class="stat-number" data-target="3">0</span><span class="stat-suffix">+</span>
-                        <span class="stat-label">Hackathons</span>
-                    </div>
+                <div class="card-body">
+                    <p class="mono-text bold">> IDENTITY: ABHISHEK RUIKAR</p>
+                    <p class="mono-text">> LOCATION: INDIA</p>
+                    <p class="mono-text">> STATUS: CS STUDENT / BUILDER</p>
                 </div>
             </div>
-            <div class="hero-image">
-                <div class="image-wrapper">
-                    <div class="image-ring"></div>
-                    <div class="image-ring ring-2"></div>
-                    <img src="avatar.png" alt="Abhishek Ruikar" class="avatar">
-                    <div class="floating-badge badge-1">
-                        <i class="fas fa-code"></i>
-                    </div>
-                    <div class="floating-badge badge-2">
-                        <i class="fab fa-python"></i>
-                    </div>
-                    <div class="floating-badge badge-3">
-                        <i class="fas fa-database"></i>
-                    </div>
-                </div>
+
+            <div class="sticker-badge bg-green circle-badge text-black">
+                <svg viewBox="0 0 100 100" class="rotating-text">
+                    <path id="circlePath" d="M 50, 50 m -37, 0 a 37,37 0 1,1 74,0 a 37,37 0 1,1 -74,0" fill="transparent"/>
+                    <text>
+                        <textPath href="#circlePath">
+                            100% RAW CODE • PROBLEM SOLVER • 
+                        </textPath>
+                    </text>
+                </svg>
+                <div class="center-star">★</div>
+            </div>
+        </section>
+
+        <!-- Divider Marquee -->
+        <div class="marquee-huge bg-black text-white border-top border-bottom">
+            <div class="marquee-track-fast">
+                <span>C++</span> ⚡ <span>PYTHON</span> ⚡ <span>SQL</span> ⚡ <span>MACHINE LEARNING</span> ⚡ <span>SYSTEM DESIGN</span> ⚡ <span>C++</span> ⚡ <span>PYTHON</span> ⚡ <span>SQL</span> ⚡ <span>MACHINE LEARNING</span> ⚡ <span>SYSTEM DESIGN</span>
             </div>
         </div>
-        <div class="scroll-indicator">
-            <div class="mouse">
-                <div class="wheel"></div>
-            </div>
-            <span>Scroll Down</span>
-        </div>
-    </section>
 
-    <!-- About Section -->
-    <section class="section about" id="about">
-        <div class="container">
-            <h2 class="section-title">
-                <span class="section-number">01.</span> About Me
-            </h2>
-            <div class="about-grid">
-                <div class="about-text">
-                    <p class="about-intro">
-                        I'm a <span class="highlight">Computer Science student</span> at YCCE, driven by curiosity
-                        and a passion for solving real-world problems through code.
-                    </p>
-                    <p>
-                        My core strength lies in <span class="highlight">C++</span>, and I'm deeply comfortable
-                        with problem solving and data structures — skills I actively sharpen on
-                        <span class="highlight">LeetCode</span>. I also bring working knowledge of
-                        <span class="highlight">Python</span> and <span class="highlight">databases</span> to the table.
-                    </p>
-                    <p>
-                        I've built multiple projects ranging from AI-based systems to personal finance tools.
-                        Currently, I'm working on a <span class="highlight">traffic violation detection system</span>,
-                        focusing on real-world problem solving using technology.
-                    </p>
-                    <p>
-                        I've also participated in several <span class="highlight">hackathons</span>, where I've
-                        improved my ability to build solutions under time constraints and collaborate effectively in
-                        teams.
-                    </p>
-                    <div class="about-details">
-                        <div class="detail-item">
-                            <i class="fas fa-graduation-cap"></i>
-                            <div>
-                                <strong>Education</strong>
-                                <span>B.Tech CSE, YCCE</span>
-                            </div>
-                        </div>
-                        <div class="detail-item">
-                            <i class="fas fa-map-marker-alt"></i>
-                            <div>
-                                <strong>Location</strong>
-                                <span>India</span>
-                            </div>
-                        </div>
-                        <div class="detail-item">
-                            <i class="fas fa-envelope"></i>
-                            <div>
-                                <strong>Email</strong>
-                                <span>abhishekruikar67@gmail.com</span>
-                            </div>
-                        </div>
-                        <div class="detail-item">
-                            <i class="fas fa-laptop-code"></i>
-                            <div>
-                                <strong>Focus</strong>
-                                <span>AI / ML / Problem Solving</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="about-visual">
-                    <div class="code-window">
-                        <div class="code-header">
-                            <div class="code-dots">
-                                <span class="dot red"></span>
-                                <span class="dot yellow"></span>
-                                <span class="dot green"></span>
-                            </div>
-                            <span class="code-filename">abhishek.json</span>
-                        </div>
-                        <pre class="code-body"><code>{
-  <span class="code-key">"name"</span>: <span class="code-string">"Abhishek Ruikar"</span>,
-  <span class="code-key">"role"</span>: <span class="code-string">"CS Student"</span>,
-  <span class="code-key">"college"</span>: <span class="code-string">"YCCE"</span>,
-  <span class="code-key">"languages"</span>: [
-    <span class="code-string">"C++"</span>,
-    <span class="code-string">"Python"</span>,
-    <span class="code-string">"SQL"</span>
-  ],
-  <span class="code-key">"interests"</span>: [
-    <span class="code-string">"AI/ML"</span>,
-    <span class="code-string">"DSA"</span>,
-    <span class="code-string">"Problem Solving"</span>
-  ],
-  <span class="code-key">"available"</span>: <span class="code-bool">true</span>
-}</code></pre>
-                    </div>
+        <!-- About & Philosophy Layout -->
+        <section class="grid-2 border-bottom">
+            <div class="info-block bg-white border-right pattern-bg">
+                <h2 class="block-title bg-black text-white">THE_ORIGIN.</h2>
+                <div class="terminal-box bg-white border-basic drop-shadow mono-text">
+                    <i>/* Problem solver by nature. */</i><br><br>
+                    <span class="blue-text">std::cout</span> &lt;&lt; <span class="red-text">"I build intelligent systems and APIs."</span>;<br><br>
+                    I operate primarily in the backend, focusing on data structures, algorithms, and AI/ML architectures rather than pushing pixels.
                 </div>
             </div>
-        </div>
-    </section>
-
-    <!-- Skills Section -->
-    <section class="section skills" id="skills">
-        <div class="container">
-            <h2 class="section-title">
-                <span class="section-number">02.</span> Skills & Expertise
-            </h2>
-            <div class="skills-grid">
-                <div class="skill-card" data-skill="cpp">
-                    <div class="skill-icon">
-                        <i class="fas fa-code"></i>
-                    </div>
-                    <h3 class="skill-name">C++</h3>
-                    <p class="skill-desc">Core language for DSA & competitive programming</p>
-                    <div class="skill-bar">
-                        <div class="skill-progress" data-progress="90"></div>
-                    </div>
-                    <span class="skill-level">Advanced</span>
-                </div>
-                <div class="skill-card" data-skill="python">
-                    <div class="skill-icon">
-                        <i class="fab fa-python"></i>
-                    </div>
-                    <h3 class="skill-name">Python</h3>
-                    <p class="skill-desc">AI/ML projects, scripting & automation</p>
-                    <div class="skill-bar">
-                        <div class="skill-progress" data-progress="80"></div>
-                    </div>
-                    <span class="skill-level">Intermediate</span>
-                </div>
-                <div class="skill-card" data-skill="sql">
-                    <div class="skill-icon">
-                        <i class="fas fa-database"></i>
-                    </div>
-                    <h3 class="skill-name">SQL</h3>
-                    <p class="skill-desc">Database design, queries & optimization</p>
-                    <div class="skill-bar">
-                        <div class="skill-progress" data-progress="75"></div>
-                    </div>
-                    <span class="skill-level">Intermediate</span>
-                </div>
-                <div class="skill-card" data-skill="excel">
-                    <div class="skill-icon">
-                        <i class="fas fa-file-excel"></i>
-                    </div>
-                    <h3 class="skill-name">Excel</h3>
-                    <p class="skill-desc">Data analysis, formulas & visualization</p>
-                    <div class="skill-bar">
-                        <div class="skill-progress" data-progress="70"></div>
-                    </div>
-                    <span class="skill-level">Intermediate</span>
-                </div>
-                <div class="skill-card" data-skill="powerbi">
-                    <div class="skill-icon">
-                        <i class="fas fa-chart-bar"></i>
-                    </div>
-                    <h3 class="skill-name">Power BI</h3>
-                    <p class="skill-desc">Dashboards, reports & business intelligence</p>
-                    <div class="skill-bar">
-                        <div class="skill-progress" data-progress="65"></div>
-                    </div>
-                    <span class="skill-level">Intermediate</span>
-                </div>
-                <div class="skill-card" data-skill="dsa">
-                    <div class="skill-icon">
-                        <i class="fas fa-project-diagram"></i>
-                    </div>
-                    <h3 class="skill-name">DSA</h3>
-                    <p class="skill-desc">Data structures & algorithms on LeetCode</p>
-                    <div class="skill-bar">
-                        <div class="skill-progress" data-progress="85"></div>
-                    </div>
-                    <span class="skill-level">Advanced</span>
-                </div>
-                <div class="skill-card" data-skill="c">
-                    <div class="skill-icon">
-                        <i class="fas fa-microchip"></i>
-                    </div>
-                    <h3 class="skill-name">C</h3>
-                    <p class="skill-desc">Systems programming & low-level development</p>
-                    <div class="skill-bar">
-                        <div class="skill-progress" data-progress="80"></div>
-                    </div>
-                    <span class="skill-level">Intermediate</span>
-                </div>
-                <div class="skill-card" data-skill="numpy">
-                    <div class="skill-icon">
-                        <i class="fas fa-cube"></i>
-                    </div>
-                    <h3 class="skill-name">NumPy</h3>
-                    <p class="skill-desc">Numerical computing & array operations</p>
-                    <div class="skill-bar">
-                        <div class="skill-progress" data-progress="70"></div>
-                    </div>
-                    <span class="skill-level">Intermediate</span>
-                </div>
-                <div class="skill-card" data-skill="ml">
-                    <div class="skill-icon">
-                        <i class="fas fa-brain"></i>
-                    </div>
-                    <h3 class="skill-name">Machine Learning</h3>
-                    <p class="skill-desc">Model training, evaluation & deployment</p>
-                    <div class="skill-bar">
-                        <div class="skill-progress" data-progress="72"></div>
-                    </div>
-                    <span class="skill-level">Intermediate</span>
-                </div>
-                <div class="skill-card" data-skill="dl">
-                    <div class="skill-icon">
-                        <i class="fas fa-network-wired"></i>
-                    </div>
-                    <h3 class="skill-name">Deep Learning</h3>
-                    <p class="skill-desc">Neural networks, CNNs & deep architectures</p>
-                    <div class="skill-bar">
-                        <div class="skill-progress" data-progress="65"></div>
-                    </div>
-                    <span class="skill-level">Intermediate</span>
-                </div>
-                <div class="skill-card" data-skill="leadership">
-                    <div class="skill-icon">
-                        <i class="fas fa-users"></i>
-                    </div>
-                    <h3 class="skill-name">Leadership</h3>
-                    <p class="skill-desc">Team management & project coordination</p>
-                    <div class="skill-bar">
-                        <div class="skill-progress" data-progress="75"></div>
-                    </div>
-                    <span class="skill-level">Intermediate</span>
-                </div>
-                <div class="skill-card" data-skill="data-analysis">
-                    <div class="skill-icon">
-                        <i class="fas fa-chart-line"></i>
-                    </div>
-                    <h3 class="skill-name">Data Analysis</h3>
-                    <p class="skill-desc">Data wrangling, visualization & insights</p>
-                    <div class="skill-bar">
-                        <div class="skill-progress" data-progress="70"></div>
-                    </div>
-                    <span class="skill-level">Intermediate</span>
+            
+            <div class="info-block bg-yellow">
+                <h2 class="block-title bg-black text-white">THE_ARSENAL.</h2>
+                <div class="brutal-tags">
+                    <div class="brutal-tag bg-white">C++ CORE</div>
+                    <div class="brutal-tag bg-white">PYTHON</div>
+                    <div class="brutal-tag bg-white">LEETCODE</div>
+                    <div class="brutal-tag bg-white">DBMS / SQL</div>
+                    <div class="brutal-tag bg-white">COMPUTER VISION</div>
+                    <div class="brutal-tag bg-white">ALGORITHMS</div>
+                    <div class="brutal-tag bg-white">DATA MINING</div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Projects Section -->
-    <section class="section projects" id="projects">
-        <div class="container">
-            <h2 class="section-title">
-                <span class="section-number">03.</span> Featured Projects
-            </h2>
-            <div class="projects-grid">
-                <!-- Project 1 -->
-                <div class="project-card featured">
-                    <div class="project-card-inner">
-                        <div class="project-header">
-                            <div class="project-icon">
-                                <i class="fas fa-car-crash"></i>
-                            </div>
-                            <div class="project-links">
-                                <a href="https://github.com/abhishekruikar7-rgb" target="_blank" rel="noopener"
-                                    aria-label="GitHub">
-                                    <i class="fab fa-github"></i>
-                                </a>
-                            </div>
-                        </div>
-                        <h3 class="project-title">AI-Based Accident Hotspot Detection</h3>
-                        <p class="project-description">
-                            An intelligent system that identifies accident-prone zones using machine learning
-                            algorithms.
-                            Analyzes historical data to predict and visualize dangerous road segments,
-                            helping authorities take preventive measures.
-                        </p>
-                        <div class="project-tech">
-                            <span class="tech-tag">Python</span>
-                            <span class="tech-tag">Machine Learning</span>
-                            <span class="tech-tag">Flask</span>
-                        </div>
-                        <div class="project-status">
-                            <span class="status-dot completed"></span>
-                            Completed
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Project 2 -->
-                <div class="project-card">
-                    <div class="project-card-inner">
-                        <div class="project-header">
-                            <div class="project-icon">
-                                <i class="fas fa-wallet"></i>
-                            </div>
-                            <div class="project-links">
-                                <a href="https://github.com/abhishekruikar7-rgb" target="_blank" rel="noopener"
-                                    aria-label="GitHub">
-                                    <i class="fab fa-github"></i>
-                                </a>
-                            </div>
-                        </div>
-                        <h3 class="project-title">Personal Finance Assistant</h3>
-                        <p class="project-description">
-                            A smart finance assistant that helps users manage their spending, track budgets,
-                            and get AI-powered insights. Features interactive dashboards
-                            and predictive analytics for better financial decisions.
-                        </p>
-                        <div class="project-tech">
-                            <span class="tech-tag">Python</span>
-                            <span class="tech-tag">ML</span>
-                            <span class="tech-tag">Streamlit</span>
-                        </div>
-                        <div class="project-status">
-                            <span class="status-dot completed"></span>
-                            Completed
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Project 3 -->
-                <div class="project-card">
-                    <div class="project-card-inner">
-                        <div class="project-header">
-                            <div class="project-icon">
-                                <i class="fas fa-traffic-light"></i>
-                            </div>
-                            <div class="project-links">
-                                <a href="https://github.com/abhishekruikar7-rgb" target="_blank" rel="noopener"
-                                    aria-label="GitHub">
-                                    <i class="fab fa-github"></i>
-                                </a>
-                            </div>
-                        </div>
-                        <h3 class="project-title">Traffic Violation Detection System</h3>
-                        <p class="project-description">
-                            A real-time traffic monitoring system that detects violations using computer vision.
-                            Leverages AI to identify rule-breaking vehicles,
-                            contributing to smarter and safer urban traffic management.
-                        </p>
-                        <div class="project-tech">
-                            <span class="tech-tag">Python</span>
-                            <span class="tech-tag">Computer Vision</span>
-                            <span class="tech-tag">AI</span>
-                        </div>
-                        <div class="project-status">
-                            <span class="status-dot in-progress"></span>
-                            In Progress
-                        </div>
-                    </div>
-                </div>
+        <!-- Projects Grid -->
+        <section class="projects-section">
+            <div class="section-title-wrap border-bottom">
+                <h2 class="massive-title">PROJECTS / (3)</h2>
+                <div class="arrow-down">↓</div>
             </div>
-        </div>
-    </section>
+            
+            <div class="brutal-grid">
+                
+                <!-- Card 1 -->
+                <div class="brutal-project-card bg-white drop-shadow">
+                    <div class="proj-header border-bottom bg-red text-white">
+                        <span>P-01</span>
+                    </div>
+                    <div class="proj-body pattern-bg-2">
+                        <h3 class="proj-title bg-white border-basic">ACCIDENT HOTSPOT AI</h3>
+                        <p class="proj-desc mono-text bg-white border-basic">Machine learning based predictive model to flag spatial danger zones for traffic management.</p>
+                        
+                        <div class="proj-tech">
+                            <span class="tech-pill bg-yellow">PYTHON</span>
+                            <span class="tech-pill bg-blue text-white">ML</span>
+                        </div>
+                    </div>
+                    <a href="https://github.com/abhishekruikar7-rgb" target="_blank" class="brutal-btn bg-black text-white">VIEW_SOURCE</a>
+                </div>
 
-    <!-- Experience / Hackathons Section -->
-    <section class="section experience" id="experience">
-        <div class="container">
-            <h2 class="section-title">
-                <span class="section-number">04.</span> Hackathons & Experience
-            </h2>
-            <div class="timeline">
-                <div class="timeline-item">
-                    <div class="timeline-marker">
-                        <i class="fas fa-trophy"></i>
+                <!-- Card 2 -->
+                <div class="brutal-project-card bg-white drop-shadow">
+                    <div class="proj-header border-bottom bg-blue text-white">
+                        <span>P-02</span>
                     </div>
-                    <div class="timeline-content">
-                        <h3>Hackathon Participant</h3>
-                        <p class="timeline-subtitle">Multiple Events</p>
-                        <p>
-                            Participated in several hackathons, building end-to-end solutions under tight deadlines.
-                            These experiences sharpened my ability to prototype quickly, think creatively,
-                            and collaborate effectively in diverse teams.
-                        </p>
-                        <div class="timeline-tags">
-                            <span>Team Collaboration</span>
-                            <span>Rapid Prototyping</span>
-                            <span>Innovation</span>
+                    <div class="proj-body pattern-bg-2">
+                        <h3 class="proj-title bg-white border-basic">FINANCE ASSISTANT</h3>
+                        <p class="proj-desc mono-text bg-white border-basic">Smart spending tracking module utilizing algorithmic insight for capital management.</p>
+                        
+                        <div class="proj-tech">
+                            <span class="tech-pill bg-yellow">PYTHON</span>
+                            <span class="tech-pill bg-green">DATA</span>
                         </div>
                     </div>
+                    <a href="https://github.com/abhishekruikar7-rgb" target="_blank" class="brutal-btn bg-black text-white">VIEW_SOURCE</a>
                 </div>
-                <div class="timeline-item">
-                    <div class="timeline-marker">
-                        <i class="fas fa-code"></i>
-                    </div>
-                    <div class="timeline-content">
-                        <h3>Competitive Programming</h3>
-                        <p class="timeline-subtitle">LeetCode</p>
-                        <p>
-                            Actively solving problems on LeetCode to build a strong foundation in
-                            data structures and algorithms. Focused on optimizing solutions
-                            and mastering different problem-solving patterns in C++.
-                        </p>
-                        <div class="timeline-tags">
-                            <span>C++</span>
-                            <span>DSA</span>
-                            <span>Problem Solving</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-marker">
-                        <i class="fas fa-graduation-cap"></i>
-                    </div>
-                    <div class="timeline-content">
-                        <h3>B.Tech Computer Science</h3>
-                        <p class="timeline-subtitle">YCCE</p>
-                        <p>
-                            Pursuing a degree in Computer Science & Engineering, with a focus on
-                            core CS fundamentals, software development, and emerging technologies
-                            like AI and machine learning.
-                        </p>
-                        <div class="timeline-tags">
-                            <span>Computer Science</span>
-                            <span>Engineering</span>
-                            <span>AI/ML</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <!-- Contact Section -->
-    <section class="section contact" id="contact">
-        <div class="container">
-            <h2 class="section-title">
-                <span class="section-number">05.</span> Get In Touch
-            </h2>
-            <div class="contact-grid">
-                <div class="contact-info">
-                    <h3 class="contact-heading">Let's Build Something Together</h3>
-                    <p class="contact-text">
-                        I'm always open to discussing new projects, creative ideas,
-                        or opportunities to be a part of your vision. Feel free to reach out!
-                    </p>
-                    <div class="contact-links">
-                        <a href="mailto:abhishekruikar67@gmail.com" class="contact-item" id="emailLink">
-                            <div class="contact-icon">
-                                <i class="fas fa-envelope"></i>
-                            </div>
-                            <div>
-                                <strong>Email</strong>
-                                <span>abhishekruikar67@gmail.com</span>
-                            </div>
-                        </a>
-                        <a href="https://github.com/abhishekruikar7-rgb" target="_blank" rel="noopener"
-                            class="contact-item" id="githubLink">
-                            <div class="contact-icon">
-                                <i class="fab fa-github"></i>
-                            </div>
-                            <div>
-                                <strong>GitHub</strong>
-                                <span>abhishekruikar7-rgb</span>
-                            </div>
-                        </a>
-                        <a href="https://www.linkedin.com/in/abhishekruikar" target="_blank" rel="noopener"
-                            class="contact-item" id="linkedinLink">
-                            <div class="contact-icon">
-                                <i class="fab fa-linkedin-in"></i>
-                            </div>
-                            <div>
-                                <strong>LinkedIn</strong>
-                                <span>abhishekruikar</span>
-                            </div>
-                        </a>
+                <!-- Card 3 -->
+                <div class="brutal-project-card bg-white drop-shadow">
+                    <div class="proj-header border-bottom bg-green">
+                        <span>P-03</span>
                     </div>
+                    <div class="proj-body pattern-bg-2">
+                        <h3 class="proj-title bg-white border-basic">TRAFFIC SYSTEM</h3>
+                        <p class="proj-desc mono-text bg-white border-basic">Computer vision enforcement network built to dynamically penalize rule violations.</p>
+                        
+                        <div class="proj-tech">
+                            <span class="tech-pill bg-yellow">PYTHON</span>
+                            <span class="tech-pill bg-red text-white">OPENCV</span>
+                        </div>
+                    </div>
+                    <a href="https://github.com/abhishekruikar7-rgb" target="_blank" class="brutal-btn bg-black text-white">VIEW_SOURCE</a>
                 </div>
-                <div class="contact-form-wrapper">
-                    <form class="contact-form" id="contactForm">
-                        <div class="form-group">
-                            <input type="text" id="formName" placeholder=" " required>
-                            <label for="formName">Your Name</label>
-                            <span class="form-line"></span>
-                        </div>
-                        <div class="form-group">
-                            <input type="email" id="formEmail" placeholder=" " required>
-                            <label for="formEmail">Your Email</label>
-                            <span class="form-line"></span>
-                        </div>
-                        <div class="form-group">
-                            <textarea id="formMessage" rows="4" placeholder=" " required></textarea>
-                            <label for="formMessage">Your Message</label>
-                            <span class="form-line"></span>
-                        </div>
-                        <button type="submit" class="btn btn-primary btn-submit" id="submitBtn">
-                            <span>Send Message</span>
-                            <i class="fas fa-paper-plane"></i>
-                        </button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <p class="footer-text">
-                    Designed & Built by <span class="highlight">Abhishek Ruikar</span>
-                </p>
-                <div class="footer-socials">
-                    <a href="https://github.com/abhishekruikar7-rgb" target="_blank" rel="noopener" aria-label="GitHub">
-                        <i class="fab fa-github"></i>
-                    </a>
-                    <a href="https://www.linkedin.com/in/abhishekruikar" target="_blank" rel="noopener"
-                        aria-label="LinkedIn">
-                        <i class="fab fa-linkedin-in"></i>
-                    </a>
-                    <a href="mailto:abhishekruikar67@gmail.com" aria-label="Email">
-                        <i class="fas fa-envelope"></i>
-                    </a>
-                </div>
-                <p class="footer-copy">&copy; 2026 Abhishek Ruikar. All rights reserved.</p>
             </div>
-        </div>
-    </footer>
+        </section>
+
+        <!-- Footer / Contact -->
+        <footer class="brutal-footer border-top bg-black text-white">
+            <h2 class="giant-heading">EXECUTE COMM.</h2>
+            <div class="footer-links">
+                <a href="https://github.com/abhishekruikar7-rgb" class="brutal-btn-lg bg-white text-black drop-shadow-white">GITHUB</a>
+                <a href="https://www.linkedin.com/in/abhishekruikar" class="brutal-btn-lg bg-blue text-white drop-shadow-white">LINKEDIN</a>
+                <a href="mailto:abhishekruikar67@gmail.com" class="brutal-btn-lg bg-yellow text-black drop-shadow-white">EMAIL_ME</a>
+            </div>
+            <div class="footer-bottom border-top">
+                <span class="mono-text">© 2026 ABHISHEK RUIKAR</span>
+                <span class="mono-text">RAW_HTML_NO_BS</span>
+            </div>
+        </footer>
+
+    </main>
 
     <script src="script.js"></script>
 </body>
-
 </html>
