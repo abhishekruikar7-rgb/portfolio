@@ -3,179 +3,271 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Abhishek Ruikar — Neo-Brutalism Portfolio">
-    <title>A.RUIKAR // BUILDER</title>
-    <!-- Brutalist Fonts: Archivo Black for Display, Space Mono for Text -->
-    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <meta name="description" content="Portfolio of Abhishek Ruikar - High-End System Architect & AI Engineer">
+    <title>AR | TECHNICAL_PORTFOLIO.SYS</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
-<body id="brutal-body">
+<body class="technical-theme">
     
-    <!-- Custom Brutalist Cursor -->
-    <div class="cursor-dot" id="cursor-dot"></div>
-    <div class="cursor-cross" id="cursor-cross"></div>
+    <!-- MESH GRADIENT CONTAINER -->
+    <div class="mesh-container">
+        <div class="mesh-blob blob-1"></div>
+        <div class="mesh-blob blob-2"></div>
+        <div class="mesh-blob blob-3"></div>
+        <div class="mesh-noise"></div>
+    </div>
 
-    <!-- Navigation Area -->
-    <nav class="brutal-nav border-bottom">
-        <div class="nav-logo border-right">
-            <span>A.RUIKAR</span>
-        </div>
-        
-        <div class="nav-marquee border-right">
-            <div class="marquee-track">
-                <span>FRONTEND IGNORANT</span> • <span>BACKEND DOMINANT</span> • <span>FRONTEND IGNORANT</span> • <span>BACKEND DOMINANT</span> • <span>FRONTEND IGNORANT</span> • <span>BACKEND DOMINANT</span>
-            </div>
-        </div>
+    <!-- HUD OVERLAYS -->
+    <div class="hud-layer scroll-progress">
+        <div class="progress-bar" id="scroll-bar"></div>
+    </div>
+    <div class="hud-layer section-tag mono" id="hud-nav-tag">// AR_SYSTEM : ROOT</div>
+    <div class="hud-layer system-scanline"></div>
 
-        <a href="mailto:abhishekruikar67@gmail.com" class="nav-cta bg-red text-white">
-            HIRE.ME
-        </a>
+    <!-- Navigation -->
+    <nav class="navbar glass-subtle">
+        <div class="nav-container max-width">
+            <a href="#" class="nav-logo mono">ABHISHEK_R. <span class="blink">_</span></a>
+            <ul class="nav-links mono">
+                <li><a href="#about"><span class="nav-num">01.</span> About</a></li>
+                <li><a href="#skills"><span class="nav-num">02.</span> Arsenal</a></li>
+                <li><a href="#projects"><span class="nav-num">03.</span> Projects</a></li>
+                <li><a href="#contact" class="nav-cta btn tech-btn">INITIATE_CONTACT</a></li>
+            </ul>
+            <div class="mobile-toggle"><i class="fas fa-bars"></i></div>
+        </div>
     </nav>
 
-    <!-- Main Container -->
-    <main class="container">
-        
+    <!-- Content Sections -->
+    <main>
         <!-- Hero Section -->
-        <section class="hero-section">
-            <h1 class="giant-heading">
-                ARCHITECTING<br>
-                <span class="bg-yellow border-basic stagger-text" style="display:inline-block; transform: rotate(-2deg); margin: 10px 0;">INTELLIGENCE</span><br>
-                & LOGIC.
-            </h1>
-            
-            <div class="hero-card brutal-card bg-blue text-white">
-                <div class="card-img-wrapper border-bottom">
-                    <img src="avatar.png" class="brutal-img" alt="Abhishek" onerror="this.src='https://ui-avatars.com/api/?name=Abhishek+Ruikar&background=random&size=400'">
+        <section id="hero" class="hero-section center-col">
+            <!-- 3D GRID BACKGROUND -->
+            <div class="hero-3d-grid" id="hero-grid"></div>
+
+            <!-- HUD SIDEBAR LEFT -->
+            <aside class="hud-sidebar hud-left mono hide-mobile">
+                <div class="hud-header">[ SYSTEM_LOG ]</div>
+                <div class="hud-log-stream" id="log-stream">
+                    <!-- Dynamic logs here -->
                 </div>
-                <div class="card-body">
-                    <p class="mono-text bold">> IDENTITY: ABHISHEK RUIKAR</p>
-                    <p class="mono-text">> LOCATION: INDIA</p>
-                    <p class="mono-text">> STATUS: CS STUDENT / BUILDER</p>
+                <div class="hud-footer">VER: 2.0.4_LATEST</div>
+            </aside>
+
+            <!-- HUD SIDEBAR RIGHT -->
+            <aside class="hud-sidebar hud-right mono hide-mobile">
+                <div class="hud-header">[ CORE_METRICS ]</div>
+                <div class="hud-metrics">
+                    <div class="metric-row">CPU: <span class="pulse">OPTIMAL</span></div>
+                    <div class="metric-row">MEM: 12.4GB / 32GB</div>
+                    <div class="metric-row">NET: UPLINK_STABLE</div>
+                    <div class="metric-row">POS: <span id="pos-display">0.0, 0.0</span></div>
+                </div>
+                <div class="hud-visual-bars">
+                    <div class="v-bar" style="height: 40%"></div>
+                    <div class="v-bar" style="height: 70%"></div>
+                    <div class="v-bar" style="height: 50%"></div>
+                    <div class="v-bar" style="height: 90%"></div>
+                </div>
+            </aside>
+
+            <div class="hero-content text-center max-width">
+                <div class="hero-visual-wrap reveal-fade">
+                    <span class="mono hero-tag reveal-up"># ACCESS_GRANTED</span>
+                    <!-- PARTICLE CONTROLLER -->
+                    <div id="particle-identity" class="particle-container">
+                        <canvas id="hero-canvas"></canvas>
+                        <div class="canvas-glow"></div>
+                    </div>
+                </div>
+                <div class="hero-sub-wrap reveal-up delay-1">
+                    <p class="hero-sub">
+                        I engineer robust backend architectures and AI-driven systems. <br>
+                        Technically specialized in complex logic and performance scaling.
+                    </p>
+                </div>
+                <div class="hero-ctas reveal-up delay-2">
+                    <a href="#projects" class="btn tech-btn p-24">EXPLORE_SYSTEMS</a>
+                    <a href="#about" class="btn ghost-btn mono">READ_MANIFESTO_</a>
                 </div>
             </div>
-
-            <div class="sticker-badge bg-green circle-badge text-black">
-                <svg viewBox="0 0 100 100" class="rotating-text">
-                    <path id="circlePath" d="M 50, 50 m -37, 0 a 37,37 0 1,1 74,0 a 37,37 0 1,1 -74,0" fill="transparent"/>
-                    <text>
-                        <textPath href="#circlePath">
-                            100% RAW CODE • PROBLEM SOLVER • 
-                        </textPath>
-                    </text>
-                </svg>
-                <div class="center-star">★</div>
+            
+            <div class="mouse-scroll-hint mono reveal-fade delay-3">
+                <div class="scroll-wheel"></div>
+                SCROLL_TO_DESCEND
             </div>
         </section>
 
-        <!-- Divider Marquee -->
-        <div class="marquee-huge bg-black text-white border-top border-bottom">
-            <div class="marquee-track-fast">
-                <span>C++</span> ⚡ <span>PYTHON</span> ⚡ <span>SQL</span> ⚡ <span>MACHINE LEARNING</span> ⚡ <span>SYSTEM DESIGN</span> ⚡ <span>C++</span> ⚡ <span>PYTHON</span> ⚡ <span>SQL</span> ⚡ <span>MACHINE LEARNING</span> ⚡ <span>SYSTEM DESIGN</span>
-            </div>
-        </div>
-
-        <!-- About & Philosophy Layout -->
-        <section class="grid-2 border-bottom">
-            <div class="info-block bg-white border-right pattern-bg">
-                <h2 class="block-title bg-black text-white">THE_ORIGIN.</h2>
-                <div class="terminal-box bg-white border-basic drop-shadow mono-text">
-                    <i>/* Problem solver by nature. */</i><br><br>
-                    <span class="blue-text">std::cout</span> &lt;&lt; <span class="red-text">"I build intelligent systems and APIs."</span>;<br><br>
-                    I operate primarily in the backend, focusing on data structures, algorithms, and AI/ML architectures rather than pushing pixels.
+        <!-- About Section -->
+        <section id="about" class="about-section padding-block section-reveal">
+            <div class="about-container max-width grid-layout">
+                <div class="about-visual center-all">
+                    <div class="avatar-hud">
+                        <div class="ring ring-outer"></div>
+                        <div class="ring ring-inner"></div>
+                        <div class="avatar-card glass-plate">
+                            <img src="avatar.png" alt="Abhishek" class="avatar-img" onerror="this.src='https://ui-avatars.com/api/?name=Abhishek+Ruikar&background=random&size=400'">
+                        </div>
+                        <div class="data-point point-tl mono">LAT: 21.145</div>
+                        <div class="data-point point-tr mono">LON: 79.088</div>
+                        <div class="data-point point-bl mono">ID: AR_2026</div>
+                        <div class="data-point point-br mono">STATUS: ACTIVE</div>
+                    </div>
                 </div>
-            </div>
-            
-            <div class="info-block bg-yellow">
-                <h2 class="block-title bg-black text-white">THE_ARSENAL.</h2>
-                <div class="brutal-tags">
-                    <div class="brutal-tag bg-white">C++ CORE</div>
-                    <div class="brutal-tag bg-white">PYTHON</div>
-                    <div class="brutal-tag bg-white">LEETCODE</div>
-                    <div class="brutal-tag bg-white">DBMS / SQL</div>
-                    <div class="brutal-tag bg-white">COMPUTER VISION</div>
-                    <div class="brutal-tag bg-white">ALGORITHMS</div>
-                    <div class="brutal-tag bg-white">DATA MINING</div>
+                <div class="about-text">
+                    <div class="tag-wrap mono mb-16"><span class="status-dot"></span> [ FILE: MANIFESTO.SYS ]</div>
+                    <h2 class="section-heading mb-32">The Genesis.</h2>
+                    <p class="desc-text mb-24">
+                        I'm a Software Engineer centered on the intricate logic of high-performance systems. My evolution from core competitive programming to AI/ML architecture drives every line of code I commit.
+                    </p>
+                    <p class="desc-text mb-32">
+                        I bridge the gap between abstract algorithms and technical impact. Whether building predictive models or optimizing traffic systems, technical precision is my absolute priority.
+                    </p>
+                    <div class="stats-row grid-layout-mini">
+                        <div class="stat-box glass-subtle reveal-up" style="--d: 0.1s;">
+                            <span class="stat-val mono">500+</span>
+                            <span class="stat-lab mono">PROBLEMS_SOLVED</span>
+                        </div>
+                        <div class="stat-box glass-subtle reveal-up" style="--d: 0.2s;">
+                            <span class="stat-val mono">B.TECH</span>
+                            <span class="stat-lab mono">CS_CREDENTIALS</span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- Projects Grid -->
-        <section class="projects-section">
-            <div class="section-title-wrap border-bottom">
-                <h2 class="massive-title">PROJECTS / (3)</h2>
-                <div class="arrow-down">↓</div>
-            </div>
-            
-            <div class="brutal-grid">
-                
-                <!-- Card 1 -->
-                <div class="brutal-project-card bg-white drop-shadow">
-                    <div class="proj-header border-bottom bg-red text-white">
-                        <span>P-01</span>
+        <!-- Skills Section -->
+        <section id="skills" class="skills-section padding-block section-reveal">
+            <div class="skills-container max-width">
+                <div class="tag-wrap mono mb-16 center-all"><span class="status-dot"></span> [ MOD: ARSENAL_MODULE ]</div>
+                <h2 class="section-heading text-center mb-64">Technical Capabilities.</h2>
+                <div class="skills-grid">
+                    <!-- Tech Column 1 -->
+                    <div class="skill-pillar glass-plate p-40 reveal-up" style="--d: 0.1s;">
+                        <div class="pillar-icon"><i class="fas fa-terminal"></i></div>
+                        <h3 class="mono mb-16">CORE_LOGIC</h3>
+                        <ul class="skill-list mono">
+                            <li>> C++ (EXPERT)</li>
+                            <li>> C / DATA_STRUC</li>
+                            <li>> ALGORITHMS</li>
+                            <li>> SYS_DESIGN</li>
+                        </ul>
                     </div>
-                    <div class="proj-body pattern-bg-2">
-                        <h3 class="proj-title bg-white border-basic">ACCIDENT HOTSPOT AI</h3>
-                        <p class="proj-desc mono-text bg-white border-basic">Machine learning based predictive model to flag spatial danger zones for traffic management.</p>
-                        
-                        <div class="proj-tech">
-                            <span class="tech-pill bg-yellow">PYTHON</span>
-                            <span class="tech-pill bg-blue text-white">ML</span>
-                        </div>
+                    <!-- Tech Column 2 -->
+                    <div class="skill-pillar glass-plate p-40 reveal-up" style="--d: 0.2s;">
+                        <div class="pillar-icon"><i class="fas fa-brain"></i></div>
+                        <h3 class="mono mb-16">INTELLIGENCE</h3>
+                        <ul class="skill-list mono">
+                            <li>> PYTHON (ML)</li>
+                            <li>> DEEP_LEARNING</li>
+                            <li>> COMP_VISION</li>
+                            <li>> AI_ROUTING</li>
+                        </ul>
                     </div>
-                    <a href="https://github.com/abhishekruikar7-rgb" target="_blank" class="brutal-btn bg-black text-white">VIEW_SOURCE</a>
+                    <!-- Tech Column 3 -->
+                    <div class="skill-pillar glass-plate p-40 reveal-up" style="--d: 0.3s;">
+                        <div class="pillar-icon"><i class="fas fa-network-wired"></i></div>
+                        <h3 class="mono mb-16">DATA_SYSTEMS</h3>
+                        <ul class="skill-list mono">
+                            <li>> SQL / DBMS</li>
+                            <li>> POWERBI_ANALYSIS</li>
+                            <li>> DATA_INTEGRATION</li>
+                            <li>> CLOUD_COMPUTE</li>
+                        </ul>
+                    </div>
                 </div>
-
-                <!-- Card 2 -->
-                <div class="brutal-project-card bg-white drop-shadow">
-                    <div class="proj-header border-bottom bg-blue text-white">
-                        <span>P-02</span>
-                    </div>
-                    <div class="proj-body pattern-bg-2">
-                        <h3 class="proj-title bg-white border-basic">FINANCE ASSISTANT</h3>
-                        <p class="proj-desc mono-text bg-white border-basic">Smart spending tracking module utilizing algorithmic insight for capital management.</p>
-                        
-                        <div class="proj-tech">
-                            <span class="tech-pill bg-yellow">PYTHON</span>
-                            <span class="tech-pill bg-green">DATA</span>
-                        </div>
-                    </div>
-                    <a href="https://github.com/abhishekruikar7-rgb" target="_blank" class="brutal-btn bg-black text-white">VIEW_SOURCE</a>
-                </div>
-
-                <!-- Card 3 -->
-                <div class="brutal-project-card bg-white drop-shadow">
-                    <div class="proj-header border-bottom bg-green">
-                        <span>P-03</span>
-                    </div>
-                    <div class="proj-body pattern-bg-2">
-                        <h3 class="proj-title bg-white border-basic">TRAFFIC SYSTEM</h3>
-                        <p class="proj-desc mono-text bg-white border-basic">Computer vision enforcement network built to dynamically penalize rule violations.</p>
-                        
-                        <div class="proj-tech">
-                            <span class="tech-pill bg-yellow">PYTHON</span>
-                            <span class="tech-pill bg-red text-white">OPENCV</span>
-                        </div>
-                    </div>
-                    <a href="https://github.com/abhishekruikar7-rgb" target="_blank" class="brutal-btn bg-black text-white">VIEW_SOURCE</a>
-                </div>
-
             </div>
         </section>
 
-        <!-- Footer / Contact -->
-        <footer class="brutal-footer border-top bg-black text-white">
-            <h2 class="giant-heading">EXECUTE COMM.</h2>
-            <div class="footer-links">
-                <a href="https://github.com/abhishekruikar7-rgb" class="brutal-btn-lg bg-white text-black drop-shadow-white">GITHUB</a>
-                <a href="https://www.linkedin.com/in/abhishekruikar" class="brutal-btn-lg bg-blue text-white drop-shadow-white">LINKEDIN</a>
-                <a href="mailto:abhishekruikar67@gmail.com" class="brutal-btn-lg bg-yellow text-black drop-shadow-white">EMAIL_ME</a>
+        <!-- Projects Section -->
+        <section id="projects" class="projects-section padding-block section-reveal">
+            <div class="projects-container max-width">
+                <div class="flex-between mb-64">
+                    <div class="tag-wrap mono mb-8"><span class="status-dot"></span> [ DB: PROJECT_ARCHIVE ]</div>
+                    <h2 class="section-heading">Executed Directives.</h2>
+                </div>
+                <div class="projects-grid">
+                    <!-- Project Card 1 -->
+                    <div class="project-case glass-plate reveal-up" style="--d: 0.1s;">
+                        <div class="project-img-sim bg-gradient-1">
+                            <span class="sim-code mono">RUN: ML_SCAN.SYS</span>
+                        </div>
+                        <div class="project-content p-32">
+                            <span class="mono tech-id">P_01</span>
+                            <h3 class="mb-16">Accident Hotspot AI</h3>
+                            <p class="desc-text mb-24">High-precision predictive model utilizing spatial data to identify collision zones.</p>
+                            <div class="tech-tags mono mb-32">
+                                <span>#ML</span> <span>#PYTHON</span> <span>#AI</span>
+                            </div>
+                            <a href="https://github.com/abhishekruikar7-rgb" target="_blank" class="btn ghost-btn sm mono">DEPLOY_SOURCE <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                    <!-- Project Card 2 -->
+                    <div class="project-case glass-plate reveal-up" style="--d: 0.2s;">
+                        <div class="project-img-sim bg-gradient-2">
+                            <span class="sim-code mono">RUN: FIN_ALG.SYS</span>
+                        </div>
+                        <div class="project-content p-32">
+                            <span class="mono tech-id">P_02</span>
+                            <h3 class="mb-16">Finance Assistant</h3>
+                            <p class="desc-text mb-24">Algorithmic capital tracker focused on predictive spending and asset management.</p>
+                            <div class="tech-tags mono mb-32">
+                                <span>#ALGO</span> <span>#PYTHON</span> <span>#DATA</span>
+                            </div>
+                            <a href="https://github.com/abhishekruikar7-rgb" target="_blank" class="btn ghost-btn sm mono">DEPLOY_SOURCE <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                    <!-- Project Card 3 -->
+                    <div class="project-case glass-plate reveal-up" style="--d: 0.3s;">
+                        <div class="project-img-sim bg-gradient-3">
+                            <span class="sim-code mono">RUN: VISION_NET.SYS</span>
+                        </div>
+                        <div class="project-content p-32">
+                            <span class="mono tech-id">P_03</span>
+                            <h3 class="mb-16">Smart Traffic System</h3>
+                            <p class="desc-text mb-24">Computer vision architecture for violation detection and optimization of vehicle flow.</p>
+                            <div class="tech-tags mono mb-32">
+                                <span>#OPENCV</span> <span>#PYTHON</span> <span>#VISION</span>
+                            </div>
+                            <a href="https://github.com/abhishekruikar7-rgb" target="_blank" class="btn ghost-btn sm mono">DEPLOY_SOURCE <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="footer-bottom border-top">
-                <span class="mono-text">© 2026 ABHISHEK RUIKAR</span>
-                <span class="mono-text">RAW_HTML_NO_BS</span>
-            </div>
-        </footer>
+        </section>
 
+        <!-- Final Call Section -->
+        <section id="contact" class="contact-section padding-block section-reveal">
+            <div class="max-width text-center">
+                <div class="tag-wrap mono mb-32 center-all"><span class="status-dot"></span> [ COMM: OPEN_UPLINK ]</div>
+                <h2 class="colossal-title mb-64 reveal-text">INITIATE <br> CONTACT.</h2>
+                <div class="contact-grid grid-layout mb-64">
+                    <a href="mailto:abhishekruikar67@gmail.com" class="contact-card glass-plate p-40 reveal-up" style="--d: 0.1s;">
+                        <i class="fas fa-envelope mb-16"></i>
+                        <span class="mono">EMAIL_LINK</span>
+                    </a>
+                    <a href="https://www.linkedin.com/in/abhishekruikar" target="_blank" class="contact-card glass-plate p-40 reveal-up" style="--d: 0.2s;">
+                        <i class="fab fa-linkedin mb-16"></i>
+                        <span class="mono">LINKEDIN_SYS</span>
+                    </a>
+                    <a href="https://github.com/abhishekruikar7-rgb" target="_blank" class="contact-card glass-plate p-40 reveal-up" style="--d: 0.3s;">
+                        <i class="fab fa-github mb-16"></i>
+                        <span class="mono">GITHUB_REPO</span>
+                    </a>
+                </div>
+                <div class="manifest-footer mono mb-64">
+                    [ SYSTEM_ONLINE ] • [ AR_2026_MASTER_ARCHIVE ]
+                </div>
+                <p class="mono text-muted">&copy; ABHISHEK RUIKAR • BUILT_FOR_SCALE</p>
+            </div>
+        </section>
     </main>
 
     <script src="script.js"></script>
