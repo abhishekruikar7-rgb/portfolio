@@ -1,15 +1,17 @@
-/* ===== INTERACTIVE NEURAL NETWORK & HUD ENGINE ===== */
+/* ===== GEOMETRIC 3D CUBE & HUD ENGINE ===== */
 
 document.addEventListener('DOMContentLoaded', () => {
     
-    // 1. NEURAL NETWORK ENGINE (PARTICLES + LINES)
+    // 1. 3D CUBE PARTICLE ENGINE
     const canvas = document.getElementById('hero-canvas');
     const ctx = canvas.getContext('2d');
     
     let w, h;
     const particles = [];
-    const particleCount = 100; // Balanced for line drawing performance
-    const connectionDist = 120;
+    const particleCount = 200;
+    const cubeSize = 120;
+    let cubeState = 'NORMAL'; // NORMAL, EXPLODE
+    let angleX = 0, angleY = 0;
 
     function initCanvas() {
         w = canvas.width = canvas.parentElement.offsetWidth;
@@ -18,75 +20,90 @@ document.addEventListener('DOMContentLoaded', () => {
     initCanvas();
     window.addEventListener('resize', initCanvas);
 
+    // Cube Edges Definition (Pairing vertices 0-7)
+    const vertices = [
+        {x: -1, y: -1, z: -1}, {x: 1, y: -1, z: -1},
+        {x: 1, y: 1, z: -1}, {x: -1, y: 1, z: -1},
+        {x: -1, y: -1, z: 1}, {x: 1, y: -1, z: 1},
+        {x: 1, y: 1, z: 1}, {x: -1, y: 1, z: 1}
+    ];
+    const edges = [
+        [0,1], [1,2], [2,3], [3,0], // back
+        [4,5], [5,6], [6,7], [7,4], // front
+        [0,4], [1,5], [2,6], [3,7]  // connectors
+    ];
+
     class Particle {
         constructor() {
-            this.x = Math.random() * w;
-            this.y = Math.random() * h;
-            this.vx = (Math.random() - 0.5) * 1.5;
-            this.vy = (Math.random() - 0.5) * 1.5;
+            // Assign to a random edge
+            const edge = edges[Math.floor(Math.random() * edges.length)];
+            this.v1 = vertices[edge[0]];
+            this.v2 = vertices[edge[1]];
+            this.t = Math.random(); // Position along the edge
+            
+            // Local 3D target coordinates
+            this.lx = (this.v1.x + (this.v2.x - this.v1.x) * this.t) * cubeSize;
+            this.ly = (this.v1.y + (this.v2.y - this.v1.y) * this.t) * cubeSize;
+            this.lz = (this.v1.z + (this.v2.z - this.v1.z) * this.t) * cubeSize;
+
+            this.x = (Math.random() - 0.5) * w;
+            this.y = (Math.random() - 0.5) * h;
+            this.z = (Math.random() - 0.5) * 500;
+            
+            this.vx = 0; this.vy = 0; this.vz = 0;
             this.size = Math.random() * 2 + 1;
-            this.color = Math.random() > 0.5 ? '#0ea5e9' : '#8b5cf6';
+            this.color = Math.random() > 0.5 ? '#22d3ee' : '#fff';
         }
 
-        update(mouseX, mouseY, shock) {
-            // SHOCKWAVE (REPULSION ON CLICK)
-            if (shock) {
-                const dx = this.x - shock.x;
-                const dy = this.y - shock.y;
-                const dist = Math.sqrt(dx*dx + dy*dy);
-                if (dist < 250) {
-                    const force = (250 - dist) / 15;
-                    this.vx += (dx / dist) * force;
-                    this.vy += (dy / dist) * force;
-                }
-            }
+        update() {
+            // 3D Rotation Math
+            let rx = this.lx;
+            let ry = this.ly * Math.cos(angleX) - this.lz * Math.sin(angleX);
+            let rz = this.ly * Math.sin(angleX) + this.lz * Math.cos(angleX);
 
-            // MOUSE ATTRACTION
-            if (mouseX !== undefined) {
-                const dx = mouseX - this.x;
-                const dy = mouseY - this.y;
-                const dist = Math.sqrt(dx*dx + dy*dy);
-                if (dist < 300) {
-                    this.vx += dx / 2500;
-                    this.vy += dy / 2500;
-                }
+            let finalX = rx * Math.cos(angleY) + rz * Math.sin(angleY);
+            let finalY = ry;
+            let finalZ = -rx * Math.sin(angleY) + rz * Math.cos(angleY);
+
+            if (cubeState === 'NORMAL') {
+                const dx = finalX - this.x;
+                const dy = finalY - this.y;
+                const dz = finalZ - this.z;
+                
+                this.vx += dx * 0.04;
+                this.vy += dy * 0.04;
+                this.vz += dz * 0.04;
+                
+                this.vx *= 0.9;
+                this.vy *= 0.9;
+                this.vz *= 0.9;
+            } else {
+                this.vx *= 0.98;
+                this.vy *= 0.98;
+                this.vz *= 0.98;
             }
 
             this.x += this.vx;
             this.y += this.vy;
-            this.vx *= 0.98;
-            this.vy *= 0.98;
-
-            // Boundary Bounce
-            if (this.x < 0 || this.x > w) this.vx *= -1;
-            if (this.y < 0 || this.y > h) this.vy *= -1;
+            this.z += this.vz;
         }
 
         draw() {
+            // Perspective Projection
+            const fov = 400;
+            const perspective = fov / (fov + this.z);
+            const px = this.x * perspective + w / 2;
+            const py = this.y * perspective + h / 2;
+            const ps = this.size * perspective;
+
+            if (px < 0 || px > w || py < 0 || py > h) return;
+
             ctx.beginPath();
-            ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+            ctx.arc(px, py, ps, 0, Math.PI * 2);
             ctx.fillStyle = this.color;
+            ctx.globalAlpha = perspective; 
             ctx.fill();
-        }
-    }
-
-    function drawConnections() {
-        for (let i = 0; i < particles.length; i++) {
-            for (let j = i + 1; j < particles.length; j++) {
-                const dx = particles[i].x - particles[j].x;
-                const dy = particles[i].y - particles[j].y;
-                const dist = Math.sqrt(dx*dx + dy*dy);
-
-                if (dist < connectionDist) {
-                    const alpha = 1 - dist / connectionDist;
-                    ctx.beginPath();
-                    ctx.moveTo(particles[i].x, particles[i].y);
-                    ctx.lineTo(particles[j].x, particles[j].y);
-                    ctx.strokeStyle = `rgba(14, 165, 233, ${alpha * 0.3})`;
-                    ctx.lineWidth = 0.5;
-                    ctx.stroke();
-                }
-            }
+            ctx.globalAlpha = 1.0;
         }
     }
 
@@ -94,21 +111,29 @@ document.addEventListener('DOMContentLoaded', () => {
         particles.push(new Particle());
     }
 
-    let currentMouseX, currentMouseY, shockPoint = null;
-
-    canvas.addEventListener('mousedown', (e) => {
-        const rect = canvas.getBoundingClientRect();
-        shockPoint = { x: e.clientX - rect.left, y: e.clientY - rect.top };
-        setTimeout(() => shockPoint = null, 300);
+    canvas.addEventListener('mousedown', () => {
+        cubeState = 'EXPLODE';
+        particles.forEach(p => {
+            p.vx = (Math.random() - 0.5) * 50;
+            p.vy = (Math.random() - 0.5) * 50;
+            p.vz = (Math.random() - 0.5) * 50;
+        });
+        setTimeout(() => { cubeState = 'NORMAL'; }, 1000);
     });
 
     function animate() {
         ctx.clearRect(0, 0, w, h);
-        drawConnections();
+        
+        angleX += 0.005;
+        angleY += 0.008;
+
+        particles.sort((a, b) => b.z - a.z); // Depth Sort
+
         particles.forEach(p => {
-            p.update(currentMouseX, currentMouseY, shockPoint);
+            p.update();
             p.draw();
         });
+
         requestAnimationFrame(animate);
     }
     animate();
@@ -123,24 +148,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
     window.addEventListener('mousemove', (e) => {
         const { clientX, clientY } = e;
-        const rect = canvas.getBoundingClientRect();
-        currentMouseX = clientX - rect.left;
-        currentMouseY = clientY - rect.top;
-
         if (posDisplay) posDisplay.textContent = `${clientX.toFixed(1)}, ${clientY.toFixed(1)}`;
 
         const centerX = window.innerWidth / 2;
         const centerY = window.innerHeight / 2;
-        const moveX = (clientX - centerX) / 50;
-        const moveY = (clientY - centerY) / 50;
+        const moveX = (clientX - centerX) / 100;
+        const moveY = (clientY - centerY) / 100;
 
         blobs.forEach((blob, index) => {
             blob.style.transform = `translate(${moveX * (index + 1)}px, ${moveY * (index + 1)}px)`;
         });
 
         if (heroContent && heroGrid) {
-            const rotX = (clientY - centerY) / -120;
-            const rotY = (clientX - centerX) / 120;
+            const rotX = (clientY - centerY) / -180;
+            const rotY = (clientX - centerX) / 180;
             heroContent.style.transform = `perspective(1000px) rotateX(${rotX}deg) rotateY(${rotY}deg)`;
             heroGrid.style.transform = `translate(-50%, -50%) rotateX(${60 + rotX}deg) rotateY(${rotY}deg)`;
         }
@@ -155,26 +176,27 @@ document.addEventListener('DOMContentLoaded', () => {
         const sections = ['hero', 'about', 'skills', 'projects', 'contact'];
         let current = 'ROOT';
         sections.forEach(id => {
-            const section = document.getElementById(id);
-            if (section && section.getBoundingClientRect().top <= 150) current = id.toUpperCase();
+            const sec = document.getElementById(id);
+            if (sec && sec.getBoundingClientRect().top <= 150) current = id.toUpperCase();
         });
         if (hudNavTag) hudNavTag.textContent = `// AR_SYSTEM : ${current}`;
     });
 
+    // HUD LOG DATA
     const logStream = document.getElementById('log-stream');
-    const logMessages = ['> NEURAL_LINK_ESTABLISHED', '> SYNCING_NODES', '> AI_CORE_ACTIVE', '> MAPPING_NETWORK', '> DATA_UPLINK_ON'];
+    const logMessages = ['> ARCHITECTING_VECTORS', '> STRUCTURAL_INTEGRITY: OK', '> SYNCING_GEOMETRY', '> 3D_RENDER_PIPELINE: ACTIVE', '> CORE_SYMMETRY: STABLE'];
     setInterval(() => {
         if (!logStream) return;
         const entry = document.createElement('div');
         entry.textContent = logMessages[Math.floor(Math.random() * logMessages.length)];
         logStream.prepend(entry);
-        if (logStream.children.length > 6) logStream.removeChild(logStream.lastChild);
+        if (logStream.children.length > 5) logStream.removeChild(logStream.lastChild);
     }, 4000);
 
     const vBars = document.querySelectorAll('.v-bar');
     setInterval(() => {
         vBars.forEach(bar => bar.style.height = Math.random() * 80 + 20 + '%');
-    }, 1200);
+    }, 1500);
 
     // SECTION REVEAL INTERSECTION OBSERVER
     const sectionsToReveal = document.querySelectorAll('.section-reveal');
@@ -197,31 +219,3 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 });
-
-// Injecting Mobile Nav styles if not in CSS
-if (!document.getElementById('mobile-nav-style')) {
-    const style = document.createElement('style');
-    style.id = 'mobile-nav-style';
-    style.innerHTML = `
-        @media (max-width: 1024px) {
-            .nav-links.active {
-                display: flex !important;
-                flex-direction: column;
-                position: fixed;
-                top: 90px;
-                left: 0;
-                width: 100%;
-                background: var(--bg-deep);
-                padding: 40px;
-                border-bottom: 2px solid var(--accent-blue);
-                z-index: 999;
-                animation: slideIn 0.4s ease forwards;
-            }
-            @keyframes slideIn {
-                from { transform: translateY(-20px); opacity: 0; }
-                to { transform: translateY(0); opacity: 1; }
-            }
-        }
-    `;
-    document.head.appendChild(style);
-}
